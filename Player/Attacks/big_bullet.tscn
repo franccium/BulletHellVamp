@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://decvf251nihhv"]
+
+[ext_resource type="Script" path="res://Player/Attacks/Bullet.cs" id="1_8wco8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rneld"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nud80"]
+size = Vector2(6, 6)
+
+[node name="BigBullet" type="Node2D"]
+script = ExtResource("1_8wco8")
+BulletSpeed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_rneld")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nud80")

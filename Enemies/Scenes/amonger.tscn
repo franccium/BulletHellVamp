@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://oopye8r7ddib"]
+
+[ext_resource type="Script" path="res://Enemies/Scripts/Amonger.cs" id="1_o0gxg"]
+[ext_resource type="Texture2D" uid="uid://buhuwykgm2ex2" path="res://Player/Sprites/reimuidle.png" id="2_jr0se"]
+[ext_resource type="PackedScene" uid="uid://c7eh50blwxflu" path="res://Enemies/Attacks/lightning.tscn" id="2_vnm10"]
+[ext_resource type="Texture2D" uid="uid://c427o1g0ptpcr" path="res://Player/Sprites/reimunewwalk1.png" id="3_ujmgo"]
+[ext_resource type="Texture2D" uid="uid://bfbgu1hm87yen" path="res://Player/Sprites/reimunewwalk2.png" id="4_tgt1r"]
+[ext_resource type="Texture2D" uid="uid://bvfp678c8mpiw" path="res://Player/Sprites/reimunewwalk3.png" id="5_ebats"]
+[ext_resource type="Texture2D" uid="uid://dhv125od783uj" path="res://Player/Sprites/reimunewwalk4.png" id="6_rv1qo"]
+[ext_resource type="Texture2D" uid="uid://bcy1l0muit77r" path="res://Player/Sprites/reimunewright.png" id="7_se6fa"]
+[ext_resource type="Texture2D" uid="uid://bnxk6orpvggg6" path="res://Player/Sprites/reimunewtop.png" id="8_0oesk"]
+[ext_resource type="Texture2D" uid="uid://dvnq225x4gv2h" path="res://Player/Sprites/reimunewrighttop.png" id="9_yi7hv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17dt6"]
+size = Vector2(24, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh0be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jr0se")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ujmgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tgt1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ebats")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rv1qo")
+}],
+"loop": true,
+"name": &"walk_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_se6fa")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0oesk")
+}],
+"loop": true,
+"name": &"walk_top",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yi7hv")
+}],
+"loop": true,
+"name": &"walk_topright",
+"speed": 5.0
+}]
+
+[node name="Amonger" type="Node2D"]
+script = ExtResource("1_o0gxg")
+_bullet = ExtResource("2_vnm10")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_17dt6")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 0.870588, 0.498039, 1)
+sprite_frames = SubResource("SpriteFrames_sh0be")
+animation = &"idle"
+
+[node name="BulletCooldown" type="Timer" parent="."]
+wait_time = 0.718
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = 33.0
+offset_right = 21.0
+offset_bottom = 39.0
+show_percentage = false

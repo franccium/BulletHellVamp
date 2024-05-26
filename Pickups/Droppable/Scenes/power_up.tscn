@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfxe1h86outgs"]
+
+[ext_resource type="Texture2D" uid="uid://skcogdfgqn4" path="res://Pickups/Droppable/Sprites/power_up.png" id="1_0xq0y"]
+[ext_resource type="Script" path="res://Pickups/Droppable/Scripts/PowerUp.cs" id="1_3ohb1"]
+
+[node name="PowerUp" type="Node2D"]
+script = ExtResource("1_3ohb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0xq0y")

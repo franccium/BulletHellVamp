@@ -1,0 +1,12 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfqi3mwsinbp0"]
+
+[ext_resource type="Script" path="res://Bullets/LaserPool.cs" id="1_h3n2l"]
+[ext_resource type="PackedScene" uid="uid://tsheuqo7fqk7" path="res://Bullets/basic_laser.tscn" id="2_8yrkj"]
+[ext_resource type="PackedScene" uid="uid://bc5n6g3uhlt25" path="res://Bullets/triple_laser.tscn" id="3_dv2vf"]
+[ext_resource type="PackedScene" uid="uid://dxkjov5xsv1hx" path="res://Bullets/star_laser.tscn" id="4_1wcir"]
+[ext_resource type="PackedScene" uid="uid://u638hvsegvhy" path="res://Bullets/star_wiggly_laser.tscn" id="5_wribt"]
+
+[node name="LaserPool" type="Node"]
+script = ExtResource("1_h3n2l")
+_laserScenes = Array[PackedScene]([ExtResource("2_8yrkj"), ExtResource("3_dv2vf"), ExtResource("4_1wcir"), ExtResource("5_wribt")])
+_poolSize = 10

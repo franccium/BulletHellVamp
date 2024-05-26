@@ -1,0 +1,24 @@
+todo stworzyc te lasery ahead of time i potem tylko je wywolujac zmieniach ich parametry na odpowiednie
+todo inicjalizowac poole w momencie, gdy faktycznie sa potrzebne, gdy tworze enemy ktory uzywa tych 
+patternow a nie ma ich w poolu, to je zainicjalizowac, gdy biore nowa bron z laserami tymi, zainicjalizowac
+
+//newLaser.Direction = new Vector2((float)Math.Cos(newLaser.Rotation), (float)Math.Sin(newLaser.Rotation)); //todo cool wave of lasers
+//newLaser.Direction = laser.Direction; //todo also cool wave of lasers
+
+
+
+moze kazdy enemy ma swoj wlasny laser i dodaje go do poola, a gdy ten enemy znika to laser znika z poola, wtedy bardzeij uniform byłoby 
+tworzenie nowych laserow i nie musialbym za kazdym razem zmieniac parametrow, bo kazdy enemy mialby swoja dedykowana czesc laserow 
+wczesniej juz zainicjalizowana dla niego
+
+
+
+bulletpool:
+usuwac poola gdy juz nie bedzie tych przeciwnikow, dodawac do poola tylko jesli nie ma zapasu z wcześniej zespawnowanych przeciwników
+also moze nie usuwac przeciwnikow tylko returnowac do poola
+
+zespawnowalem 10 przeciwnikow, pczym bullet count byl rowny 114 , jeden przeciwnik powiniem miec 30, cos trace ewidentnie
+
+
+
+loading screen zeby ladowac na spokojnie? :tf:

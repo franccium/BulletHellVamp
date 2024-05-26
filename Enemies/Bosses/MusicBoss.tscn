@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://sllfpsrowjhp"]
+
+[ext_resource type="Script" path="res://Enemies/Bosses/MusicBoss.cs" id="1_1tgb0"]
+[ext_resource type="PackedScene" uid="uid://dq0dcq76ofqyq" path="res://Player/Attacks/bullet.tscn" id="2_28yj3"]
+[ext_resource type="Texture2D" uid="uid://buhuwykgm2ex2" path="res://Player/Sprites/reimuidle.png" id="2_e3rho"]
+[ext_resource type="AudioStream" uid="uid://ds5wvn7xe3mx6" path="res://Music/130 _kindasynthialeniewiemiguesswrw.wav" id="2_qj5mu"]
+[ext_resource type="Texture2D" uid="uid://c427o1g0ptpcr" path="res://Player/Sprites/reimunewwalk1.png" id="3_psja7"]
+[ext_resource type="Texture2D" uid="uid://bfbgu1hm87yen" path="res://Player/Sprites/reimunewwalk2.png" id="4_dbxin"]
+[ext_resource type="Texture2D" uid="uid://bvfp678c8mpiw" path="res://Player/Sprites/reimunewwalk3.png" id="5_2wx6o"]
+[ext_resource type="Texture2D" uid="uid://dhv125od783uj" path="res://Player/Sprites/reimunewwalk4.png" id="6_82em0"]
+[ext_resource type="Texture2D" uid="uid://bcy1l0muit77r" path="res://Player/Sprites/reimunewright.png" id="7_blfjx"]
+[ext_resource type="Texture2D" uid="uid://bnxk6orpvggg6" path="res://Player/Sprites/reimunewtop.png" id="8_ruh7b"]
+[ext_resource type="Texture2D" uid="uid://dvnq225x4gv2h" path="res://Player/Sprites/reimunewrighttop.png" id="9_3vmt8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg40s"]
+size = Vector2(24, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_er145"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e3rho")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_psja7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dbxin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2wx6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_82em0")
+}],
+"loop": true,
+"name": &"walk_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_blfjx")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ruh7b")
+}],
+"loop": true,
+"name": &"walk_top",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3vmt8")
+}],
+"loop": true,
+"name": &"walk_topright",
+"speed": 5.0
+}]
+
+[node name="MusicBoss" type="Node2D"]
+script = ExtResource("1_1tgb0")
+_bullet = ExtResource("2_28yj3")
+_moveSpeed = 4.0
+_maxHealth = 100
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_eg40s")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 0.462745, 0.662745, 0.521569)
+sprite_frames = SubResource("SpriteFrames_er145")
+animation = &"idle"
+
+[node name="BulletCooldown" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qj5mu")
+volume_db = -24.761
+
+[node name="BeatIndicator" type="ColorRect" parent="."]
+visible = false
+offset_left = 58.0
+offset_top = -78.0
+offset_right = 68.0
+offset_bottom = -68.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 6.0
+color = Color(0, 0, 0.619608, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -19.0
+offset_top = 33.0
+offset_right = 19.0
+offset_bottom = 39.0
+show_percentage = false
+
+[node name="BeatTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BeatTimer" to="." method="OnBeat"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc5n6g3uhlt25"]
+
+[ext_resource type="Script" path="res://Bullets/TripleLaser.cs" id="1_hijsn"]
+[ext_resource type="Material" uid="uid://el8dkf11i131" path="res://Bullets/basic_laser_material.tres" id="2_ofumy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6avev"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -4.49
+linear_accel_max = 11.24
+radial_accel_min = -20.22
+radial_accel_max = 22.47
+tangential_accel_min = -8.99
+tangential_accel_max = 11.24
+damping_min = 12.36
+damping_max = 41.573
+scale_min = 3.0
+scale_max = 5.0
+color = Color(1, 0, 0, 1)
+turbulence_noise_strength = 7.11
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_hijsn")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+amount = 150
+sub_emitter = NodePath("../HitParticles")
+process_material = ExtResource("2_ofumy")
+lifetime = 0.9
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+collide_with_bodies = false
+
+[node name="HitParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_6avev")

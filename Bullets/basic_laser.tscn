@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://tsheuqo7fqk7"]
+
+[ext_resource type="Script" path="res://Bullets/BasicLaser.cs" id="1_lxly0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w0nko"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -179.0
+angle_max = 179.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 9.0
+scale_max = 12.24
+color = Color(0, 1, 1, 1)
+hue_variation_min = -0.16
+hue_variation_max = 0.09
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6avev"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -4.49
+linear_accel_max = 11.24
+radial_accel_min = -20.22
+radial_accel_max = 22.47
+tangential_accel_min = -8.99
+tangential_accel_max = 11.24
+damping_min = 12.36
+damping_max = 41.573
+scale_min = 3.0
+scale_max = 5.0
+color = Color(1, 0, 0, 1)
+turbulence_noise_strength = 7.11
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_lxly0")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+amount = 150
+sub_emitter = NodePath("../HitParticles")
+process_material = SubResource("ParticleProcessMaterial_w0nko")
+lifetime = 0.9
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+collide_with_bodies = false
+
+[node name="HitParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_6avev")

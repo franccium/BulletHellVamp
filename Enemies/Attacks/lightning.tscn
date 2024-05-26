@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7eh50blwxflu"]
+
+[ext_resource type="Script" path="res://Player/Attacks/Bullet.cs" id="1_0pcnr"]
+
+[sub_resource type="Curve" id="Curve_yhaaa"]
+min_value = -1.0
+_data = [Vector2(0, -0.032967), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a27xh"]
+curve = SubResource("Curve_yhaaa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eg887"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+color = Color(0, 0.411765, 1, 1)
+hue_variation_min = -0.43
+hue_variation_max = 0.47
+hue_variation_curve = SubResource("CurveTexture_a27xh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6byb"]
+
+[node name="Lightning" type="Node2D"]
+script = ExtResource("1_0pcnr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_eg887")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e6byb")

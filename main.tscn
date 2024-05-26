@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3s2prasqo2ft"]
+
+[ext_resource type="PackedScene" uid="uid://cqsxyg5g5dwau" path="res://GUI/Dialogue/dialogue_window.tscn" id="1_6wxrv"]
+[ext_resource type="PackedScene" uid="uid://dooobypsyqa8p" path="res://Player/Scenes/player.tscn" id="1_7for4"]
+[ext_resource type="PackedScene" uid="uid://v0w06r560h6v" path="res://Bullets/bullet_pool.tscn" id="1_gq08f"]
+[ext_resource type="PackedScene" uid="uid://bk88j50ui5k2s" path="res://Enemies/enemy_spawner.tscn" id="1_rpelq"]
+[ext_resource type="PackedScene" uid="uid://cfqi3mwsinbp0" path="res://Bullets/laser_pool.tscn" id="2_qjds7"]
+[ext_resource type="PackedScene" uid="uid://dq0dcq76ofqyq" path="res://Player/Attacks/bullet.tscn" id="4_p2t6u"]
+[ext_resource type="PackedScene" uid="uid://dd2kdifd57ho7" path="res://Player/player_gui.tscn" id="5_4g05d"]
+[ext_resource type="PackedScene" uid="uid://by21htjtcjbfq" path="res://Player/Attacks/enemy_bullet.tscn" id="5_5g87s"]
+[ext_resource type="PackedScene" uid="uid://wmwmfaaud1gk" path="res://pickup_manager.tscn" id="5_c30cx"]
+[ext_resource type="PackedScene" uid="uid://decvf251nihhv" path="res://Player/Attacks/big_bullet.tscn" id="5_y7gnk"]
+[ext_resource type="PackedScene" uid="uid://dfxe1h86outgs" path="res://Pickups/Droppable/Scenes/power_up.tscn" id="6_f2d6i"]
+
+[node name="Game" type="Node2D"]
+
+[node name="DialogueWindow" parent="." groups=["GUI"] instance=ExtResource("1_6wxrv")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = 300.0
+offset_top = 600.0
+offset_right = 300.0
+offset_bottom = 600.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayerGUI" parent="." instance=ExtResource("5_4g05d")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 526.0
+offset_bottom = 334.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_rpelq")]
+
+[node name="BulletPool" parent="." instance=ExtResource("1_gq08f")]
+_bulletScenes = Array[PackedScene]([ExtResource("4_p2t6u"), ExtResource("5_5g87s"), ExtResource("5_y7gnk")])
+
+[node name="LaserPool" parent="." instance=ExtResource("2_qjds7")]
+_poolSize = 50
+
+[node name="PickupManager" parent="." instance=ExtResource("5_c30cx")]
+_powerUpScene = ExtResource("6_f2d6i")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_7for4")]
+position = Vector2(544, 269)

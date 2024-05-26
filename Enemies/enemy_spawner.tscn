@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk88j50ui5k2s"]
+
+[ext_resource type="Script" path="res://Enemies/EnemySpawner.cs" id="1_qymec"]
+[ext_resource type="PackedScene" uid="uid://btyaeu2jq7xsf" path="res://Enemies/Scenes/third_one.tscn" id="2_u1wu1"]
+[ext_resource type="PackedScene" uid="uid://c6v3nbt8y7u75" path="res://Enemies/Scenes/boss_test.tscn" id="3_g4d31"]
+[ext_resource type="PackedScene" uid="uid://sllfpsrowjhp" path="res://Enemies/Bosses/MusicBoss.tscn" id="4_718nx"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_qymec")
+_enemyScenes = Array[PackedScene]([ExtResource("2_u1wu1"), ExtResource("3_g4d31"), ExtResource("4_718nx")])
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="ChosenEnemy" type="Label" parent="Control"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0

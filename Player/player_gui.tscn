@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd2kdifd57ho7"]
+
+[ext_resource type="PackedScene" uid="uid://bi8f1560aiyvw" path="res://Player/level_up_tab.tscn" id="1_5fvs4"]
+
+[node name="PlayerGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -332.0
+offset_top = -214.0
+offset_right = 194.0
+offset_bottom = 120.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExpBar" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Power" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BulletPattern" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LaserType" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelUpTab" parent="." instance=ExtResource("1_5fvs4")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
